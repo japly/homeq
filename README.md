@@ -105,10 +105,8 @@ Before building any dbt models i chose to check all the CSV files using DuckDB d
   | `user_type` mixed case (`SEEKER`, `Seeker`, `Landlord`) | Normalized with `lower(trim())` in `stg_users` |
   | 3 duplicate `user_id` in users.csv | Kept earliest `created_at` per `user_id` using `ROW_NUMBER()` |
   | 2 duplicate `listing_id` in listings.csv | Kept earliest `listed_at` per `listing_id` using `ROW_NUMBER()` |
-  | 5 applications reference `l_99xxx` listing IDs not in listings.csv | Filtered out in `stg_applications` — likely
-  deleted listings |
-  | 11 applications from `u_99xxx` seeker IDs not in users.csv | Filtered out in `stg_applications` — likely deleted
-  accounts |
+  | 5 applications reference `l_99xxx` listing IDs not in listings.csv | Filtered out in `stg_applications` — likely deleted listings |
+  | 11 applications from `u_99xxx` seeker IDs not in users.csv | Filtered out in `stg_applications` — likely deleted accounts |
   | 2 listings owned by `u_99xxx` landlords not in users.csv | Filtered out in `stg_listings` — same pattern as above |
   | 2 future-dated applications | Filtered out in `stg_applications` |
   | 16 users with empty `age` | Kept as NULL — field is optional at signup |
