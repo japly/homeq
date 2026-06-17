@@ -130,15 +130,13 @@ Before building any dbt models i chose to check all the CSV files using DuckDB d
   | Göteborg | 25 | 153 | 6.1 | 32.0 | 3.9 |
 
   ### Answer
-
+The marketplace works best in cities with high landlord engagement (shortlist rate). Göteborg and Malmö are struggling; 
+Stockholm and Lund are performing well on different dimensions.
 The strongest pattern in the data: 
 For five of the six cities, shortlist_rate_pct correlates strongly with rented_rate_pct (0.96). Cities with poor application-to-shortlist matching Göteborg (3.9% shortlist, 32.0% rented) and Malmö (4.8%, 33.3%) end up with the lowest rented rates. 
 Cities with high shortlist rates, Lund (10.0%, 37.5%) and Uppsala (7.8%, 36.8%) end up with the highest, among this group. 
 This isnt two separate problems; its one continuous relationship: cities with better matching tend to have more rentals.
 Stockholm is a exception. Its rented_rate (63.6%) is far above what its shortlist_rate (7.5%) would predict from that relationship. Nearly double every other city despite unremarkable demand and matching. I couldnt find a clear explanation in this dataset. Worth investigating further with another hour, ideally with data including decision timestamps and price negotiation history for exeample. 
-Lund stands out differently with a high demand (7.5, avg_applications_per_listing highest of all cities) but only 37.5% rented rate. The dataset doesnt explain this gap clearly. Possible causes can be that listings are
-too recent to have converted yet, seekers are declining offers, or price levels dont match expectations. 
-Worth investigating with longer time series data.
 
 
 ## Assumptions
@@ -151,8 +149,7 @@ Worth investigating with longer time series data.
 ## What I'd do with another hour
 
  - **Stockholm outlier investigation** — its 63.6% rented_rate breaks an otherwise near-perfect shortlist→rented 
-  correlation (0.96) across the other five cities. Ruled out listing age and rent level; would need decision-timestamp 
-  data to dig further.
+  correlation (0.96) across the other five cities. Would want to test candidate explanations like listing age or rent level, and ideally get decision-timestamp data to dig further.
   - **District-level breakdown** — city grain hides within-city variation, and was deliberately skipped here since several 
   districts have too few listings for a reliable rate.
   - **Lund supply-gap sizing** — Lund pairs highest demand-per-listing with the best matching and conversion, suggesting a 
