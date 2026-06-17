@@ -1,0 +1,64 @@
+
+ version: 2
+
+models:
+  - name: stg_users
+    columns:
+      - name: user_id
+        data_tests:
+          - unique
+          - not_null
+      - name: user_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["seeker", "landlord"]
+      - name: email
+        data_tests:
+          - not_null
+
+  - name: stg_listings
+    columns:
+      - name: listing_id
+        data_tests:
+          - unique
+          - not_null
+      - name: landlord_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_users')
+                field: user_id
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["active", "rented", "withdrawn"]
+
+  - name: stg_applications
+    columns:
+      - name: application_id
+        data_tests:
+          - unique
+          - not_null
+      - name: seeker_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_users')
+                field: user_id
+      - name: listing_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_listings')
+                field: listing_id
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["sent", "viewed", "shortlisted", "declined", "withdrawn"]

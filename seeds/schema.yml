@@ -1,0 +1,9 @@
+version: 2
+
+seeds:
+  - name: users
+    config:
+      column_types:
+        # age is probably optional and contains empty strings in teh csv. 
+        # Force varchar so stg_users can handle empty string before casting to integer
+        age: varchar

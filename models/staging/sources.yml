@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: main_raw
+    description: "Raw CSV exports loaded via dbt seed"
+    tables:
+      - name: users
+      - name: listings
+      - name: applications
