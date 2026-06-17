@@ -56,7 +56,7 @@ Together they let you distinguish four situations:
 
 Before building any dbt models i chose to check all the CSV files using DuckDB directly againts the raw data files. I checked row counts, null rates, cardinality etc. The issues I found in the data sets is lsited below.
 
- ```
+ ```sql
   -- Duplicated user_ids 
   SELECT user_id, COUNT(*)
   FROM read_csv_auto('seeds/users.csv')
