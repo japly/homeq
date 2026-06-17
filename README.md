@@ -148,7 +148,7 @@ Worth investigating with longer time series data.
   correlation (0.96) across the other five cities. Ruled out listing age and rent level; would need decision-timestamp 
   data to dig further.
   - **District-level breakdown** — city grain hides within-city variation, and was deliberately skipped here since several 
-  districts have too few listings (n=3–8) for a reliable rate.
+  districts have too few listings for a reliable rate.
   - **Lund supply-gap sizing** — Lund pairs highest demand-per-listing with the best matching and conversion, suggesting a 
   tight market. Worth quantifying how much additional listing supply the existing demand could plausibly absorb.
   - **Time-to-rented tracking** — no timestamp exists for when a listing's status flips to rented, only that it eventually 
