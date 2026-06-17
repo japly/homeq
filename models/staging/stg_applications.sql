@@ -3,13 +3,6 @@ with source as (
     FROM {{ source('raw', 'applications') }}
 ),
 
-valid_listing_ids as (
-    SELECT listing_id
-    FROM {{ ref('stg_listings') }}
-    WHERE listing_id NOT LIKE 'l_99%'
-      AND landlord_id NOT LIKE 'u_99%'
-),
-
 valid as (
     SELECT *
     FROM source
