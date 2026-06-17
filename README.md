@@ -98,6 +98,12 @@ Before building any dbt models i chose to check all the CSV files using DuckDB d
   WHERE landlord_id NOT IN (
       SELECT user_id FROM read_csv_auto('seeds/users.csv')
   );
+
+  -- For correaltion
+  SELECT corr(shortlist_rate_pct, rented_rate_pct) AS correlation
+    FROM main_marts.marketplace_performance
+    WHERE city != 'Stockholm';
+
  ```
 
   | Issue | How I handled it |
