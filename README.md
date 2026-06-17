@@ -147,7 +147,7 @@ Worth investigating with longer time series data.
 ## What I'd do with another hour
 
  - **Stockholm outlier investigation** — its 63.6% rented_rate breaks an otherwise near-perfect shortlist→rented 
-  correlation (r=0.96) across the other five cities. Ruled out listing age and rent level; would need decision-timestamp 
+  correlation (0.96) across the other five cities. Ruled out listing age and rent level; would need decision-timestamp 
   data to dig further.
   - **District-level breakdown** — city grain hides within-city variation, and was deliberately skipped here since several 
   districts have too few listings (n=3–8) for a reliable rate.
